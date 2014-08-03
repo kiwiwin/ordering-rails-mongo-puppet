@@ -97,6 +97,12 @@ describe OrdersController, :type => :controller do
 	describe 'POST order' do
 		context 'when create new order' do
 			it 'have http status 201' do
+				@user = User.new({_id: "1", name: "uesr1", contact_address: "chengdu", orders: []})
+
+				expect(User).to receive(:find).with("1").and_return(@user).once
+
+				expect(@user.orders).to receive(:build).once
+
 				post :create, {user_id: 1, order: {shipping_address: 'tianfu1', phone: '13880660444', 
 					order_items: [
 						{

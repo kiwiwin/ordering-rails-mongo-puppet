@@ -13,6 +13,8 @@ class OrdersController < ApplicationController
 	end
 
 	def create
+		@order = @user.orders.build(shipping_address: params[:order])
+
 		render nothing: true, status: :created
 	end	
 
