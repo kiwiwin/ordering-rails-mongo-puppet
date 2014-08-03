@@ -7,6 +7,12 @@ class PaymentsController < ApplicationController
 		end
 	end
 
+	def create
+		@payment = @order.build_payment()
+		@payment.save
+		render nothing: true, status: :created, location: user_order_payment_url(@user, @order)
+	end
+
 	private
 		def set_order
 			@user = User.find(params[:user_id])
