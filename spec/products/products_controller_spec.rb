@@ -62,6 +62,17 @@ describe ProductsController, :type => :controller do
 			end
 		end
 
+		context 'when product not exist' do
+			before(:each) do
+				expect(Product).to receive(:find).with("1").and_raise(MongoMapper::DocumentNotFound).once
+
+				get :show, format: :json, id: 1
+			end
+
+			it 'have http status 404' do
+				expect(response).to have_http_status(404)
+			end
+		end
 	end
 
 end
