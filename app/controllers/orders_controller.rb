@@ -7,6 +7,9 @@ class OrdersController < ApplicationController
 
 	def show
 		@order = @user.orders.select { |order| order._id == BSON::ObjectId.from_string(params[:id]) }.first
+		if !@order
+			render nothing: true, status: :not_found
+		end
 	end
 
 	private

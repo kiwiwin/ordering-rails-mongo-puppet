@@ -63,6 +63,23 @@ describe OrdersController, :type => :controller do
 				expect(order['uri']).to end_with('/users/1/orders/53c28cfa39fb280037000001')
 			end
 		end
+
+		context 'when order not exist' do
+			before(:each) do
+				@orders = [
+				]
+
+				@user = User.new({_id: "1", name: "uesr1", contact_address: "chengdu", orders: @orders})
+
+				expect(User).to receive(:find).with("1").and_return(@user).once
+
+				get :show, format: :json, user_id: 1, id: '53c28cfa39fb280037000001'
+			end
+
+			it 'have http status 404' do
+				expect(response).to have_http_status(404)
+			end
+		end
 	end
 
 end
