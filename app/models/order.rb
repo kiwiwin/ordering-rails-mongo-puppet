@@ -3,6 +3,7 @@ class Order
 
   embedded_in :user
   many :order_items
+  one :payment
 
   key :shipping_address, String
   key :phone, String

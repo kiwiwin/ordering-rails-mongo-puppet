@@ -61,6 +61,13 @@ Rails.application.routes.draw do
     resources :orders do
       resources :order_items do
       end
+
+      resource :payment do
+        member do
+          get :show
+          post :create
+        end
+      end
     end
   end
 end
