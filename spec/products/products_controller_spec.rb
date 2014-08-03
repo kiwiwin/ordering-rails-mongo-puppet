@@ -24,6 +24,15 @@ describe ProductsController, :type => :controller do
 			products = JSON.parse(response.body)
 
 			expect(products.length).to eq(2)
+
+			product = products[0]
+
+			expect(product['_id']).to eq(1)
+			expect(product['name']).to eq('apple juice')
+			expect(product['description']).to eq('good')
+			expect(product['current_price']).to eq(100)
+
+			expect(product['uri']).to end_with('/products/1')
 		end
 	end
 
