@@ -70,6 +70,7 @@ describe OrdersController, :type => :controller do
 				expect(order['shipping_address']).to eq('tianfu1')
 				expect(order['phone']).to eq('13880660444')
 				expect(order['order_items'].length).to eq(1)
+				expect(order['total_amount']).to eq(600)
 
 				expect(order['uri']).to end_with('/users/1/orders/53c28cfa39fb280037000001')
 			end

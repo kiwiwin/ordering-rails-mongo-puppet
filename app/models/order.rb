@@ -7,4 +7,8 @@ class Order
   key :shipping_address, String
   key :phone, String
 
+  def total_amount
+  	order_items.inject(0) { |sum, order_item| sum + order_item.amount }
+  end
+
 end
