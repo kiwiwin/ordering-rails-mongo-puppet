@@ -48,6 +48,8 @@ describe ProductsController, :type => :controller do
 				expect(product['name']).to eq('apple juice')
 				expect(product['description']).to eq('good')
 				expect(product['current_price']).to eq(100)
+
+				expect(product['uri']).to end_with('/products/1')
 			end
 		end
 
