@@ -42,3 +42,6 @@ gem 'bson_ext'
 gem "rspec-rails", :group => [:development, :test]
 
 gem 'rabl'
+
+gem 'capistrano'
+gem 'capistrano-ext'
