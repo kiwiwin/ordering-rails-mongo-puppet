@@ -27,5 +27,22 @@ describe ProductsController, :type => :controller do
 		end
 	end
 
+	describe 'GET product' do
+		context 'when product exist' do
+			before(:each) do
+				@product = Product.new({:_id => 1, :name => 'apple juice', :description => 'good', current_price: 100})
+
+				expect(Product).to receive(:find).with("1").and_return(@product).once
+
+				get :show, format: :json, id: 1
+			end
+
+			it 'have http status 200' do
+				expect(response).to have_http_status(200)
+			end
+		end
+
+	end
+
 end
 
