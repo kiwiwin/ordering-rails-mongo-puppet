@@ -2,6 +2,9 @@ class PaymentsController < ApplicationController
 	before_action :set_order
 	def show
 		@payment = @order.payment
+		if !@payment
+			render nothing: true, status: :not_found
+		end
 	end
 
 	private
