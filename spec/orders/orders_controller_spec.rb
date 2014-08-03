@@ -94,4 +94,22 @@ describe OrdersController, :type => :controller do
 		end
 	end
 
+	describe 'POST order' do
+		context 'when create new order' do
+			it 'have http status 201' do
+				post :create, {user_id: 1, order: {shipping_address: 'tianfu1', phone: '13880660444', 
+					order_items: [
+						{
+							product_id: 1,
+							quantity: 2,
+							amount: 600
+						}
+					]}
+				}
+
+	      		expect(response).to have_http_status(201)
+			end
+		end
+	end
+
 end

@@ -12,6 +12,10 @@ class OrdersController < ApplicationController
 		end
 	end
 
+	def create
+		render nothing: true, status: :created
+	end	
+
 	private
 		def get_user
 			@user = User.find(params[:user_id])
