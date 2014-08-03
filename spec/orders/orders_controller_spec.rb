@@ -59,6 +59,8 @@ describe OrdersController, :type => :controller do
 				expect(order['_id']).to eq('53c28cfa39fb280037000001')
 				expect(order['shipping_address']).to eq('tianfu1')
 				expect(order['phone']).to eq('13880660444')
+
+				expect(order['uri']).to end_with('/users/1/orders/53c28cfa39fb280037000001')
 			end
 		end
 	end
