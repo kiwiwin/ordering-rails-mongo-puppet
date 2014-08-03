@@ -59,6 +59,8 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :orders do
+      resources :order_items do
+      end
     end
   end
 end

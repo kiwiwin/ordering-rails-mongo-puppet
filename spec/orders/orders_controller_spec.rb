@@ -38,8 +38,18 @@ describe OrdersController, :type => :controller do
 		context 'when order exist' do
 			before(:each) do
 				@orders = [
-					{_id: BSON::ObjectId.from_string('53c28cfa39fb280037000001'), shipping_address: 'tianfu1', phone: '13880660444'},
-					{_id: BSON::ObjectId.from_string('53c28cfa39fb280037000002'), shipping_address: 'tianfu2', phone: '13880660555'}
+					{_id: BSON::ObjectId.from_string('53c28cfa39fb280037000001'), shipping_address: 'tianfu1', phone: '13880660444', 
+					order_items: [
+						{
+							product: {
+								_id: '53c28cfa39fb280037000003',
+								name: 'apple juice',
+								current_price: 300
+							},
+							quantity: 2,
+							amount: 600
+						}
+					]}
 				]
 
 				@user = User.new({_id: "1", name: "uesr1", contact_address: "chengdu", orders: @orders})
@@ -59,6 +69,7 @@ describe OrdersController, :type => :controller do
 				expect(order['_id']).to eq('53c28cfa39fb280037000001')
 				expect(order['shipping_address']).to eq('tianfu1')
 				expect(order['phone']).to eq('13880660444')
+				expect(order['order_items'].length).to eq(1)
 
 				expect(order['uri']).to end_with('/users/1/orders/53c28cfa39fb280037000001')
 			end
