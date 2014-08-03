@@ -7,7 +7,6 @@ class OrdersController < ApplicationController
 
 	def show
 		@order = @user.orders.select { |order| order._id == BSON::ObjectId.from_string(params[:id]) }.first
-		render nothing: true
 	end
 
 	private

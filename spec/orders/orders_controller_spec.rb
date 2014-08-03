@@ -52,6 +52,14 @@ describe OrdersController, :type => :controller do
 			it 'have http status 200' do
 				expect(response).to have_http_status(200)
 			end
+
+			it 'is JSON format' do
+				order = JSON.parse(response.body)
+
+				expect(order['_id']).to eq('53c28cfa39fb280037000001')
+				expect(order['shipping_address']).to eq('tianfu1')
+				expect(order['phone']).to eq('13880660444')
+			end
 		end
 	end
 
