@@ -19,6 +19,12 @@ describe ProductsController, :type => :controller do
 			expect(response).to have_http_status(200)
 		end
 
+
+		it 'is JSON format' do
+			products = JSON.parse(response.body)
+
+			expect(products.length).to eq(2)
+		end
 	end
 
 end
