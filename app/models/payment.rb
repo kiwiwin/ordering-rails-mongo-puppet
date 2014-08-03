@@ -1,5 +1,5 @@
 class Payment
-  include MongoMapper::Document
+  include MongoMapper::EmbeddedDocument
 
   belongs_to :order
 
