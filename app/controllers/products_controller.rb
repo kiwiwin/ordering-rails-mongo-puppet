@@ -5,6 +5,5 @@ class ProductsController < ApplicationController
 
 	def show
 		@product = Product.find(params[:id])
-		render nothing: true
 	end
 end

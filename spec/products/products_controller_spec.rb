@@ -40,6 +40,15 @@ describe ProductsController, :type => :controller do
 			it 'have http status 200' do
 				expect(response).to have_http_status(200)
 			end
+
+			it 'is JSON format' do
+				product = JSON.parse(response.body)
+
+				expect(product['_id']).to eq(1)
+				expect(product['name']).to eq('apple juice')
+				expect(product['description']).to eq('good')
+				expect(product['current_price']).to eq(100)
+			end
 		end
 
 	end
