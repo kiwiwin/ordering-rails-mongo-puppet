@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
 	before_action :get_user
 
 	def index
-		render nothing: true
+		@orders = @user.orders
 	end
 
 	private
